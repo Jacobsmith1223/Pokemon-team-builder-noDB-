@@ -1,26 +1,90 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react'
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+// Components
+import Header from './Components/Header/Header'
+
+// Stylesheets
+import 'reset-css'
+import './App.css'
+import Pokemon from './Components/Pokemon/Pokemon';
+
+
+
+export default class App extends Component{
+  constructor(){
+    super()
+
+
+    this.state = {
+      pokemon: [],
+      name:'',
+      type: '',
+      image:''
+    }
+  }
+  // Lifecycle methods
+  componentDidMount(){
+    axios.get('http://localhost:8080/api/pokemon').then((response) => {
+      this.setState({pokemon:response.data})
+    })
+    .catch((error)=> {console.log(error)})
+  }
+
+  addPokemon = (event) => {
+    event.preventDefault();
+
+    const {name,type,image} = this.state;
+
+    const body = {
+      name,
+      type,
+      image
+    }
+    axios.post('/api/pokemon', body).then(response => {
+      this.setState({pokemon:response.data,
+      name:'',
+    type:'',
+  image:''})
+    })
+  }
+
+  updateMon = (data) => {
+      this.setState({
+        pokemon: data
+  })}
+
+  deleteMon = (data) => {
+    this.setState({
+      pokemon:data
+    })
+  }
+
+
+  render(){
+
+    const mappedMons = this.state.pokemon.map((pokemon,index) => {
+      return <Pokemon key = {index} pokemon = {pokemon} updateMon = {this.updateMon} deleteMon={this.deleteMon}/>
+    })
+
+
+    return(
+
+    <div className="app-body">
+      <Header />
+      <div className="new-pokemon-box">
+        <form className="new-pokemon-form">
+          <label>Name</label>
+          <input type="text" value={this.state.name} onChange={(event) => this.setState({name: event.target.value})}/>
+          <label>Type</label>
+          <input type = "text" value={this.state.type} onChange={(event) => this.setState({type: event.target.value})}/>
+          <label>Image</label>
+          <input type = "text" value={this.state.image} onChange={(event) => this.setState({image: event.target.value})}/>
+          <button onClick={this.addPokemon}>Add Pokemon</button>
+        </form>
+      </div>
+      {mappedMons}
     </div>
-  );
+    )
+  }
 }
-
-export default App;
