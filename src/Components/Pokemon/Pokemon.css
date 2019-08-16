@@ -4,19 +4,26 @@
 }
 
 .pokemon-holder{
-    height:30vh;
+    height:20vh;
     display:flex;
-    flex-direction: column;
-    align-items: center;
+    width:70vw;
+    border: 1px solid rgba(0,0,0,.08);
+    background:white;
+    
 }
 .under-mon{
     width:10vw;
     display:flex;
     justify-content: space-around;
+    align-items: flex-end;
 }
 
 .words{
     width:30vw;
     display:flex;
     justify-content: space-around;
+    align-items: center;
+}
+#cursor:hover{
+    cursor:pointer;
 }

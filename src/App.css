@@ -1,5 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .app-body{
     width:100%;
     min-height: 100vh;
-    background:rgb(165, 165, 235);
+    background:rgb(231, 79, 79);
+    font-family: 'Roboto', sans-serif;
+    display:flex;
+   flex-direction: column;
+   align-items: center;
+}
+.new-pokemon-box{
+    margin-top: 2%;
+    background:#f1f1f1;
+    width:70vw;
+    height:16vh;
+    border:1px solid rgba(0,0,0,.08)
+}
+.mini-title{
+    margin-top:2%;
+    display:flex;
+    justify-content: center;
+    font-size:35px;
+}
+
+.new-pokemon-form{
+    
+    display:flex;
+    justify-content:space-evenly;
+}
+
+.pokebutton {
+    height:30px;
+    width:150px;
+    border:none;
+    font-size:20px;
+}
+
+#cursor:hover{
+    cursor:pointer;
 }

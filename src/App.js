@@ -73,14 +73,23 @@ export default class App extends Component{
     <div className="app-body">
       <Header />
       <div className="new-pokemon-box">
+        <div className="mini-title">New Pokemon:</div>
         <form className="new-pokemon-form">
+         <div>
           <label>Name</label>
           <input type="text" value={this.state.name} onChange={(event) => this.setState({name: event.target.value})}/>
+          </div>
+          <div>
           <label>Type</label>
           <input type = "text" value={this.state.type} onChange={(event) => this.setState({type: event.target.value})}/>
+          </div>
+          <div>
           <label>Image</label>
           <input type = "text" value={this.state.image} onChange={(event) => this.setState({image: event.target.value})}/>
-          <button onClick={this.addPokemon}>Add Pokemon</button>
+          </div>
+          <div >
+          <button className="pokebutton" id="cursor" onClick={this.addPokemon}>Add Pokemon</button>
+          </div>
         </form>
       </div>
       {mappedMons}

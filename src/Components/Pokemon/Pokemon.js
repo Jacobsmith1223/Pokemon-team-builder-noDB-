@@ -75,8 +75,8 @@ render(){
                      <p>Type: {type}</p>
                 </div>
                 <div className="under-mon">
-                     <Icon.Edit3 size="15" onClick= {this.handleToggle}/>
-                     < Icon.ThumbsDown size='15' onClick={this.handleDeleteMon} />
+                     <Icon.Edit2 id="cursor" size="15" onClick= {this.handleToggle}/>
+                     < Icon.Trash2 id="cursor" size='15' onClick={this.handleDeleteMon} />
                 </div>
              </div>
              )
