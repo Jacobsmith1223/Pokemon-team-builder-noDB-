@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // Components
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
 // Stylesheets
 import 'reset-css'
@@ -41,13 +42,19 @@ export default class App extends Component{
       type,
       image
     }
+    if (this.state.pokemon.length > 5){
+      alert('Team Full')
+    }
+    else{
     axios.post('/api/pokemon', body).then(response => {
       this.setState({pokemon:response.data,
       name:'',
     type:'',
   image:''})
     })
+    .catch((error)=> {console.log(error)})
   }
+}
 
   updateMon = (data) => {
       this.setState({
@@ -93,6 +100,7 @@ export default class App extends Component{
         </form>
       </div>
       {mappedMons}
+      <Footer />
     </div>
     )
   }

@@ -66,18 +66,18 @@ render(){
                 {!this.state.edit
                 ?
              (<div className="pokemon-holder">
-                <div className="image-div">
+                <section className="image-div">
                      <img src={image} alt="" className="image-sizer"/>
-                </div>
-                <div className="words">
+                </section>
+                <section className="words">
                     <p> # {id}</p>
                     <p>Name: {name}</p>
                      <p>Type: {type}</p>
-                </div>
-                <div className="under-mon">
+                </section>
+                <section className="under-mon">
                      <Icon.Edit2 id="cursor" size="15" onClick= {this.handleToggle}/>
                      < Icon.Trash2 id="cursor" size='15' onClick={this.handleDeleteMon} />
-                </div>
+                </section>
              </div>
              )
              :
